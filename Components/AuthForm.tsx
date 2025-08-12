@@ -4,7 +4,7 @@ import { z } from "zod";
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "sonner";
-import { auth } from "@/firebase/client";
+import { auth } from "@/Firebase/client";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -44,7 +44,7 @@ const AuthForm = ({ type }:{ type : FormType}) => {
 
     const nameValue = form.watch("name")
     const nameError = form.formState.errors.name
-    const isNameValid = isSignIn || (!nameError && nameValue?.length >= 3)
+    const isNameValid = isSignIn || (!nameError && nameValue ?.length >= 3)
 
     const emailValue = form.watch("email")
     const emailError = form.formState.errors.email
@@ -168,7 +168,7 @@ const AuthForm = ({ type }:{ type : FormType}) => {
                                             type="email"
                                             placeholder="Your email-id"
                                             disabled={!isNameValid}
-                                            ref={emailInputRef}
+                                            ref={ emailInputRef }
                                             {...field}
                                         />
                                     </FormControl>
