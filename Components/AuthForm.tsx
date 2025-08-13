@@ -135,10 +135,12 @@ const AuthForm = ({ type }:{ type : FormType}) => {
         <div className="card-border lg:min-w-[566px]">
             <div className="flex flex-col gap-6 card py-14 px-10">
                 <div className="flex flex-row gap-2 justify-center">
-                    <Image src="/logo.svg" alt="logo" width ={78} height={68}/>
-                    <h2 className="text-primary-100"> PrepWise</h2>
+                    <Image src="/logo.svg" alt="logo" height={34} width ={38}/>
+                    <h2 className="bg-gradient-to-r from-purple-200 to-pink-400 text-transparent bg-clip-text">
+                        PulseAI Prep
+                    </h2>
                 </div>
-                <h3> Practice job interview with AI</h3>
+                <h3> Feel the pulse of success with Dynamic AI interviews </h3>
 
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 mt-4 form">
@@ -196,8 +198,20 @@ const AuthForm = ({ type }:{ type : FormType}) => {
                             )}
                         />
 
-                        <Button className="btn" type="submit">
-                            {isSignIn ? "Sign in" : "Create an account"}
+                        {/*<Button className="btn" type="submit"  >*/}
+                        {/*    {isSignIn ? "Sign in" : "Create an account"}*/}
+                        {/*</Button>*/}
+
+                        <Button
+                            type="submit"
+                            className="btn relative overflow-hidden text-white font-bold rounded-full shadow-md
+                            bg-gradient-to-r from-purple-200 to-pink-400
+                            transition-all duration-500 ease-out
+                            hover:scale-105 hover:shadow-lg">
+                            <span className="relative z-10">
+                                {isSignIn ? "Sign in" : "Create an account"}
+                            </span>
+                            <span className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 hover:opacity-100 transition-opacity duration-500"></span>
                         </Button>
                     </form>
                 </Form>

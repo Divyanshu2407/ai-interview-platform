@@ -21,18 +21,38 @@ const Agent = ({ userName }: AgentProps ) => {
     return (
         <>
         <div className = "call-view">
-           <div className = "card-interviewer">
+           <div className = "card-interviewer bg-gradient-to-r from-purple-200 to-pink-400 ">
+               <div className="p-1 rounded-full bg-black/40">
                <div className = "avatar">
-                   <Image src="/ai-avatar.png" alt="vapi" width={65} height={54} className = "object-cover"/>
-                   {isSpeaking && <span className="animate-speak" />}
+                   <div className="p-2 rounded-full bg-gradient-to-r from-purple-300 to-pink-500 ">
+                       <Image
+                           src="/ai-avatar.png"
+                           alt="vapi"
+                           width={65}
+                           height={54}
+                           className="object-cover rounded-full"
+                       />
+                   </div>
+                   {isSpeaking && <span className="animate-speak ease-in-out infinite bg-black/50 rounded-full inline-block w-30 h-30" />}
                </div>
-               <h3> AI Interviewer </h3>
+               </div>
+               <h3 className="text-black font-bold text-2xl"> AI Interviewer </h3>
            </div>
 
             <div className = "card-border">
-                <div className = "card-content">
-                    <Image src ="/user-avatar.jpg" alt = "user avatar" width={540} height={540} className="rounded-full object-cover size-[120px]"/>
-                    <h3>{ userName }</h3>
+                <div className = "card-content bg-gradient-to-r from-purple-200 to-pink-400">
+                    <div className="p-1 rounded-full bg-black/40">
+                       <div className="p-2 rounded-full bg-gradient-to-r from-purple-200 to-pink-400">
+                          <Image
+                            src="/user-avatar.jpg"
+                            alt="user avatar"
+                            width={540}
+                            height={540}
+                            className="rounded-full object-cover size-[120px]"
+                          />
+                       </div>
+                    </div>
+                    <h3 className="text-black font-bold text-2xl">{ userName }</h3>
                 </div>
             </div>
         </div>

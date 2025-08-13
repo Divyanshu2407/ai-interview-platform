@@ -32,43 +32,47 @@ const InterviewCard = ({
         <div className="card-border w-[360px] max-sm:w-full min-h-96">
             <div className="card-interview">
                 <div>
-                    <div className={cn("absolute top-0 right-0 w-fit px-4 py-2 rounded-bl-lg", badgeColor
-                    )}
-                    >
-                        <p className="badge-text">{normalizedType}</p>
+                    <div className={cn("absolute top-0 right-0 w-fit px-4 py-2 rounded-bl-lg", badgeColor )}>
+                        <p className="bg-gradient-to-r from-purple-200 to-pink-400 text-transparent bg-clip-text font-bold">{normalizedType}</p>
                     </div>
 
                     <Image
                         src={getRandomInterviewCover()} alt="cover image"
-                        width={90} height={90}
-                        className="rounded-full object-fit size-[90px]"
+                        width={80} height={80}
+                        className="rounded-full object-fit size-[70px] bg-gradient-to-r from-purple-200 to-pink-400 text-transparent bg-clip-text font-bold"
                     />
 
-                    <h3 className="mt-5 capitalize">{role} Interview</h3>
+                    <h3 className="mt-5 capitalize"> {role} Interview </h3>
 
-                    <div className="flex flex-row gap-5 mt-3">
+                    <div className="flex flex-row gap-9 mt-3">
+
+                        <div className="flex flex-row gap-2 items-center">
+                            <Image src="/star.svg" alt="star" width={30} height={30}/>
+                            <p>{feedback?.totalScore || "---"}/100</p>
+                        </div>
+
                         <div className=" flex flex-row gap-2">
                             <Image
                                 src="/calendar.svg" alt="calendar"
-                                width={22} height={22}
+                                width={30} height={30}
                             />
                             <p>{formattedDate}</p>
                         </div>
 
-                        <div className="flex flex-row gap-2 items-center">
-                            <Image src="/star.svg" alt="star" width={22} height={22}/>
-                            <p>{feedback?.totalScore || "---"}/100</p>
-                        </div>
+
                     </div>
 
                     <p className="line-clamp-2 mt-5">
-                        {feedback?.finalAssessment || "You haven't taken this interview yet. Take is now to improve yoir skills."}
+                        {feedback?.finalAssessment || "You haven't taken this interview yet. Dive in now to level up your skills!"}
                     </p>
                 </div>
 
                 <div className=" flex flex-row justify-between">
-                    <DisplayTechIcons techStack={techstack} />
-                    <Button className="btn-primary">
+                    <DisplayTechIcons  techStack={techstack} />
+                    <Button className="btn-primary className=btn relative overflow-hidden text-white font-bold rounded-full shadow-md
+                            bg-gradient-to-r from-purple-200 to-pink-400
+                            transition-all duration-500 ease-out
+                            hover:scale-105 hover:shadow-lg" >
                         <Link
                             href={feedback
                                 ? `/interview/${interviewId}/feedback`
