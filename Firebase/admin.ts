@@ -1,6 +1,6 @@
-import {getAuth} from "firebase-admin/auth";
-import {getFirestore} from "firebase-admin/firestore";
-import {getApps, cert, initializeApp} from "firebase-admin/app";
+import { getAuth } from "firebase-admin/auth";
+import { getFirestore } from "firebase-admin/firestore";
+import { getApps, cert, initializeApp } from "firebase-admin/app";
 
 const initFirebaseAdmin = () => {
 
@@ -14,7 +14,7 @@ const initFirebaseAdmin = () => {
                     clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
                 }),
             });
-    }
+        }
         return{
             auth: getAuth(),
             db: getFirestore()

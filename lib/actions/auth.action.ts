@@ -1,8 +1,7 @@
 'use server';
 
-
 import { db, auth } from "@/Firebase/admin";
-import {cookies} from "next/headers";
+import { cookies } from "next/headers";
 
 const ONE_WEEK = 60 * 60 * 24 * 7;
 
@@ -63,8 +62,8 @@ export async function signIn(params: SignInParams){
         console.log("Sign-in error:", error);
 
         return {
-            succeess: false,
-            messsage: "Failed to log into account. Please try again.",
+            success: false,
+            message: "Failed to log into account. Please try again.",
         };
     }
 }
@@ -85,7 +84,7 @@ try{
 
     });
 } catch(error){
-    console.error("❌ Error creating session cookie:", error);
+    console.error(" Error creating session cookie:", error);
     throw new Error("Failed to create session cookie.");
 }
 }
@@ -123,33 +122,9 @@ export async function isAuthenticated() {
     return !!user;
 }
 
-export async function getInterviewsByUserId ( userId: string ): Promise<Interview[] | null> {
-    const interviews = await db
-        .collection('interviews')
-        .where('userId', '==', userId)
-        .orderBy('createdAt', 'desc')
-        .get();
-
-    return interviews.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data()
-    })) as Interview[];
-}
-
-export async function getLatestInterviews ( params: GetLatestInterviewsParams): Promise<Interview[] | null> {
-
-    const { userId, limit = 20 } = params;
-
-    const interviews = await db
-        .collection('interviews')
-        .orderBy('createdAt', 'desc')
-        .where('finalized', '==', true )
-        .where('userId', '!=', userId )
-        .limit(limit)
-        .get();
-
-    return interviews.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data()
-    })) as Interview[];
+ // Sign Out (clear session cookie)
+export async function signOut() {
+    const cookieStore = await cookies();
+    cookieStore.delete("session");
+    return { success: true, message: "Signed out successfully." };
 }

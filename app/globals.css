@@ -1,11 +1,6 @@
 @import "tailwindcss";
-
 @plugin "tailwindcss-animate";
-
 @custom-variant dark (&:is(.dark *));
-
-
-
 
 @theme {
   --color-success-100: #49de50;
@@ -200,11 +195,11 @@
     @apply w-full;
 
     .label {
-      @apply !text-light-100 !font-normal;
+      @apply text-black font-normal;
     }
 
     .input {
-      @apply !bg-dark-200 !rounded-full !min-h-12 !px-5 placeholder:!text-light-100;
+      @apply bg-dark-200 rounded-full min-h-12 px-5 placeholder:text-black;
     }
 
     .btn {
@@ -289,10 +284,10 @@
   }
 
   .card-interview {
-    @apply dark-gradient rounded-2xl min-h-full flex flex-col p-6 relative overflow-hidden gap-10 justify-between;
+    @apply dark-gradient rounded-2xl min-h-full flex flex-col p-10 relative overflow-hidden gap-10 justify-between;
 
     .badge-text {
-      @apply text-sm font-semibold capitalize;
+      @apply text-2xl font-semibold capitalize;
     }
   }
 }

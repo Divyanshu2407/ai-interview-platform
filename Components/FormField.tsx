@@ -1,17 +1,8 @@
 import React from 'react'
-import {
-    FormControl,
-    FormItem,
-    FormLabel,
-    FormMessage
-} from "@/components/ui/form"
-import {Input} from "@/components/ui/input"
-import {
-    Controller,
-    FieldValues,
-    Path,
-    Control
-} from "react-hook-form"
+import { FormControl, FormItem, FormLabel, FormMessage } from "@/Components/ui/form"
+import { Input } from "@/Components/ui/input"
+import { Controller, FieldValues, Path, Control } from "react-hook-form"
+
 
 interface FormFieldProps<T extends FieldValues> {
     control: Control<T>;
@@ -40,13 +31,18 @@ const FormField = <T extends FieldValues>({
                 <FormLabel className="label">{label}</FormLabel>
                 <FormControl>
                     <Input
-                        ref={inputRef}
-                        className={`input ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
+                        {...field}
+                        ref = { inputRef ?? field.ref }
+                        className={`input ${disabled ? "opacity-40 cursor-not-allowed" : ""}`}
                         placeholder={placeholder}
                         type={type}
                         disabled={disabled}
-                        title={disabled ? `Please fill previous fields first` : ""}
-                        {...field}
+                        title={ disabled ? "Please fill previous fields first" : ""}
+                        // For file input, value cannot be set programmatically
+                        {...(type === "file" ? {
+                            value: undefined,
+                            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                                field.onChange(e.target.files) } : {})}
                     />
                 </FormControl>
                 <FormMessage />
