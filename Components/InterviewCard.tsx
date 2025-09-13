@@ -48,7 +48,7 @@ const InterviewCard =  ({
     const techIcons = getTechLogos(techstack || []);
 
     return (
-        <div className="card-border w-[390px] max-sm:w-full min-h-96">
+        <div className="card-border w-[360px] max-sm:w-full min-h-96">
             <div className="card-interview relative flex flex-col h-full p-4">
                 <div>
                     {/* Badge */}
